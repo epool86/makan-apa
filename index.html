@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apa nak makan tonight?</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #FF9A9E 0%, #FECFEF 99%, #FECFEF 100%);
+      min-height: 100vh; margin: 0; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center; padding: 20px;
+    }
+    h1 {
+      font-size: 3rem; margin-bottom: 30px; font-weight: 800;
+      background: linear-gradient(45deg, #ff416c, #ff4b2b);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+    button {
+      background-image: linear-gradient(to right, #f6d365 0%, #fda085 51%, #f6d365 100%);
+      background-size: 200% auto; color: white; border: none;
+      padding: 15px 40px; font-size: 1.5rem; border-radius: 50px;
+      cursor: pointer; box-shadow: 0 6px 15px rgba(253,160,133,0.4);
+      transition: all 0.3s cubic-bezier(.25,.8,.25,1); font-weight: bold;
+    }
+    button:hover { background-position: right center; transform: scale(1.05); }
+    button:active { transform: scale(0.95); }
+    #result {
+      font-size: 3.5rem; margin-top: 40px; font-weight: 800; color: #333;
+      text-shadow: 2px 2px 0px #fff;
+      animation: pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: none;
+    }
+    .emoji { font-size: 6rem; display: block; margin-bottom: 10px; }
+    @keyframes pop { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+  </style>
+</head>
+<body>
+  <h1>Apa nak makan tonight?</h1>
+  <button onclick="pickDish()">Pilih untuk saya!</button>
+  <div id="result"></div>
+  <script>
+    const dishes = [
+      { name: "Nasi Lemak", emoji: "🥥" },
+      { name: "Roti Canai", emoji: "🥞" },
+      { name: "Laksa", emoji: "🍜" },
+      { name: "Satay", emoji: "🍢" },
+      { name: "Mee Goreng", emoji: "🍝" },
+      { name: "Cendol", emoji: "🍧" },
+      { name: "Rendang", emoji: "🍲" },
+      { name: "Teh Tarik", emoji: "☕" },
+      { name: "Mee Rebus", emoji: "🍜" },
+      { name: "Nasi Kerabu", emoji: "🥗" }
+    ];
+    function pickDish() {
+      const res = document.getElementById('result');
+      const pick = dishes[Math.floor(Math.random() * dishes.length)];
+      res.style.display = 'none';
+      setTimeout(() => {
+        res.innerHTML = `<span class="emoji">${pick.emoji}</span>${pick.name}`;
+        res.style.display = 'block';
+      }, 50);
+    }
+  </script>
+</body>
+</html>
